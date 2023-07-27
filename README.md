@@ -17,7 +17,7 @@ This module provides a easy way to using DoH as client in golang.
 ## Features
 
 - DoH client, Simple and Easy to use
-- Support cloudflare, google, quad9 and dnspod
+- Support cloudflare, google, quad9, dnspod, alidns, 360 and tencent
 - Specify the provider you like
 - Auto select fastest provider
 - Enable cache is supported
