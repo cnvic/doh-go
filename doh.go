@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/likexian/doh-go/dns"
-	"github.com/likexian/doh-go/provider/cloudflare"
-	"github.com/likexian/doh-go/provider/dnspod"
-	"github.com/likexian/doh-go/provider/google"
-	"github.com/likexian/doh-go/provider/quad9"
+	"github.com/cnvic/doh-go/dns"
+	"github.com/cnvic/doh-go/provider/cloudflare"
+	"github.com/cnvic/doh-go/provider/dnspod"
+	"github.com/cnvic/doh-go/provider/google"
+	"github.com/cnvic/doh-go/provider/quad9"
 	"github.com/likexian/gokit/xcache"
 	"github.com/likexian/gokit/xhash"
 )

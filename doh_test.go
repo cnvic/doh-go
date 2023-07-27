@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/likexian/doh-go/dns"
+	"github.com/cnvic/doh-go/dns"
 	"github.com/likexian/gokit/assert"
 )
 

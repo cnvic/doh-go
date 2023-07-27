@@ -26,7 +26,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/likexian/doh-go/dns"
+	"github.com/cnvic/doh-go/dns"
 	"github.com/likexian/gokit/xhttp"
 	"github.com/likexian/gokit/xip"
 )
