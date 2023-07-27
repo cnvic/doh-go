@@ -30,7 +30,9 @@ import (
 	"github.com/cnvic/doh-go/provider/cloudflare"
 	"github.com/cnvic/doh-go/provider/dnspod"
 	"github.com/cnvic/doh-go/provider/google"
+	"github.com/cnvic/doh-go/provider/qihu"
 	"github.com/cnvic/doh-go/provider/quad9"
+	"github.com/cnvic/doh-go/provider/tencent"
 	"github.com/likexian/gokit/xcache"
 	"github.com/likexian/gokit/xhash"
 )
@@ -58,6 +60,8 @@ const (
 	GoogleProvider
 	Quad9Provider
 	AliDNSProvider
+	QiHuProvider
+	TencentProvider
 )
 
 // DoH Providers list
@@ -68,6 +72,8 @@ var (
 		GoogleProvider,
 		Quad9Provider,
 		AliDNSProvider,
+		QiHuProvider,
+		TencentProvider,
 	}
 )
 
@@ -97,6 +103,10 @@ func New(provider int) Provider {
 		return google.New()
 	case Quad9Provider:
 		return quad9.New()
+	case QiHuProvider:
+		return qihu.New()
+	case TencentProvider:
+		return tencent.New()
 	default:
 		return alidns.New()
 	}

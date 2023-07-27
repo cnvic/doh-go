@@ -63,6 +63,16 @@ func TestNew(t *testing.T) {
 	rsp, err = c.Query(ctx, "likexian.com", dns.TypeA)
 	assert.Nil(t, err)
 	assert.Gt(t, len(rsp.Answer), 0)
+
+	c = New(QiHuProvider)
+	rsp, err = c.Query(ctx, "likexian.com", dns.TypeA)
+	assert.Nil(t, err)
+	assert.Gt(t, len(rsp.Answer), 0)
+
+	c = New(TencentProvider)
+	rsp, err = c.Query(ctx, "likexian.com", dns.TypeA)
+	assert.Nil(t, err)
+	assert.Gt(t, len(rsp.Answer), 0)
 }
 
 func TestUse(t *testing.T) {
@@ -75,7 +85,7 @@ func TestUse(t *testing.T) {
 	_, err := c.Query(ctx, "likexian", dns.TypeA)
 	assert.NotNil(t, err)
 
-	c = Use(CloudflareProvider, DNSPodProvider, GoogleProvider, Quad9Provider, AliDNSProvider)
+	c = Use(CloudflareProvider, DNSPodProvider, GoogleProvider, Quad9Provider, AliDNSProvider, QiHuProvider, TencentProvider)
 	for i := 0; i < 100; i++ {
 		for _, v := range []dns.Type{dns.TypeA, dns.TypeMX} {
 			rsp, err := c.Query(ctx, "likexian.com", v)
@@ -121,7 +131,7 @@ func TestConcurrentQuery(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
-	c := Use(CloudflareProvider, DNSPodProvider, GoogleProvider, Quad9Provider, AliDNSProvider)
+	c := Use(CloudflareProvider, DNSPodProvider, GoogleProvider, Quad9Provider, AliDNSProvider, QiHuProvider, TencentProvider)
 	defer c.Close()
 
 	var wg sync.WaitGroup
