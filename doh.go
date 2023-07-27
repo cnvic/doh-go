@@ -26,6 +26,7 @@ import (
 	"time"
 
 	"github.com/cnvic/doh-go/dns"
+	"github.com/cnvic/doh-go/provider/alidns"
 	"github.com/cnvic/doh-go/provider/cloudflare"
 	"github.com/cnvic/doh-go/provider/dnspod"
 	"github.com/cnvic/doh-go/provider/google"
@@ -56,6 +57,7 @@ const (
 	DNSPodProvider
 	GoogleProvider
 	Quad9Provider
+	AliDNSProvider
 )
 
 // DoH Providers list
@@ -65,17 +67,18 @@ var (
 		DNSPodProvider,
 		GoogleProvider,
 		Quad9Provider,
+		AliDNSProvider,
 	}
 )
 
 // Version returns package version
 func Version() string {
-	return "0.6.4"
+	return "0.2.0"
 }
 
 // Author returns package author
 func Author() string {
-	return "[Li Kexian](https://www.likexian.com/)"
+	return "[Vic](https://github.com/cnvic)"
 }
 
 // License returns package license
@@ -92,8 +95,10 @@ func New(provider int) Provider {
 		return dnspod.New()
 	case GoogleProvider:
 		return google.New()
-	default:
+	case Quad9Provider:
 		return quad9.New()
+	default:
+		return alidns.New()
 	}
 }
 
